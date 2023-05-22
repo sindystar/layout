@@ -22,9 +22,11 @@ a {
   border-bottom: 1px solid #ddd;
   .inner {
     width: 1180px;
-    height: 150px;
-    margin: 0 auto;
-    position: relative;
+    height: 150px; //header 에는 높이값을 주는 편이다
+    margin: 0 auto; // 가운데 배치
+    position: relative; //중요! h1, gnb, util은 모두 앱솔루트로 배치 하기 때문에 배치랑 요소의 부모태그가 relative로 기준점을 정확하게 가지고 있어야 header안에서 배치가 가능하다 
+
+    //inner 안의 모든 요소가 앱솔루트롤 배치 되면 당연히 높이값을 부모인 inner가 인식하지 못한다 따라서 inner 에 높이 값을 부여하게 되면 자식 요소들을 앱솔루트로 배치해도 부모 요소 안에서 배치 되기 때문에 앱솔루트로 인한 높이값 인식 문제가 해결 된다 
     h1 {
       position: absolute;
       left: 0;
@@ -43,8 +45,8 @@ a {
       li {
         width: 20%;
         height: 60%;
-        float: left;
-        position: relative;
+        float: left; //플로해제가 필요 없다. 부모가 높이값을 가지고 있기 때문에 
+        position: relative; //꾸미기 요소인 가상선택자 after의 기준점이 각각의 li에 있어야 li옆에 가상 요소로 만든 선이 잘 그려질수 있기 때문이다  
         &::after {
           content: "";
           display: block;
@@ -78,7 +80,7 @@ a {
           display: inline-block;
           font: 12px/1 "arial";
           color: #999;
-          padding: 10px 30px;
+          padding: 10px 30px; //높이값이나 마진들을 패딩을 사용해서 나타낼수도 있다
         }
       }
     }
