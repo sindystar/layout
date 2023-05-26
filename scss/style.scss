@@ -27,7 +27,7 @@ a {
     position: relative; //중요! h1, gnb, util은 모두 앱솔루트로 배치 하기 때문에 배치랑 요소의 부모태그가 relative로 기준점을 정확하게 가지고 있어야 header안에서 배치가 가능하다 
 
     //inner 안의 모든 요소가 앱솔루트롤 배치 되면 당연히 높이값을 부모인 inner가 인식하지 못한다 따라서 inner 에 높이 값을 부여하게 되면 자식 요소들을 앱솔루트로 배치해도 부모 요소 안에서 배치 되기 때문에 앱솔루트로 인한 높이값 인식 문제가 해결 된다 
-    h1 {
+    > h1 {
       position: absolute;
       left: 0;
       top: 20px;
@@ -36,52 +36,159 @@ a {
         color: #555;
       }
     }
-    
-    #gnb {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 1005;
-      border-top: 1px solid #ccc;
-      li {
-        width: 20%;
-        height: 60%;
-        float: left; //플로해제가 필요 없다. 부모가 높이값을 가지고 있기 때문에 
-        position: relative; //꾸미기 요소인 가상선택자 after의 기준점이 각각의 li에 있어야 li옆에 가상 요소로 만든 선이 잘 그려질수 있기 때문이다  
-        &::after {
-          content: "";
-          display: block;
-          width: 1px;
-          height: 40%;
-          background: #ccc;
-          position: absolute;
-          right: 0;
-          top: 30%;
+    .menuWeb {
+      #gnb {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 1005;
+        border-top: 1px solid #ccc;
+        li {
+          width: 20%;
+          height: 60%;
+          float: left; //플로해제가 필요 없다. 부모가 높이값을 가지고 있기 때문에 
+          position: relative; //꾸미기 요소인 가상선택자 after의 기준점이 각각의 li에 있어야 li옆에 가상 요소로 만든 선이 잘 그려질수 있기 때문이다  
+          &::after {
+            content: "";
+            display: block;
+            width: 1px;
+            height: 40%;
+            background: #ccc;
+            position: absolute;
+            right: 0;
+            top: 30%;
+          }
+          &:last-child::after {
+            display: none;
+          }
+          a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            font: 14px/60px "arial";
+            color: #666;
+            text-align: center;
+          }
         }
-        &:last-child::after {
-          display: none;
-        }
-        a {
-          display: block;
-          width: 100%;
-          height: 100%;
-          font: 14px/60px "arial";
-          color: #666;
-          text-align: center;
+            
+      }
+      #util {
+        position: absolute;
+        right: 0;
+        top: 25px;
+        li {
+          float: left;
+          a {
+            display: inline-block;
+            font: 12px/1 "arial";
+            color: #999;
+            padding: 10px 30px; //높이값이나 마진들을 패딩을 사용해서 나타낼수도 있다
+          }
         }
       }
     }
-    #util {
+    
+    .btnCall {
       position: absolute;
-      right: 0;
-      top: 25px;
-      li {
-        float: left
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: none;
+      width: 20px;
+      height: 20px;
+      &.on {
+        &::before {
+          top: 50%;
+          margin-top: -1px;
+          transform: rotate(45deg);
+        }
+        &::after {
+          bottom: 50%;
+          margin-bottom: -1px;
+          transform: rotate(-45deg);
+        }
+        span {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+      &::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #000;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: top 0.5s 0s, transform 0.5s 0.5s;
+        //트랜지션을 걸어주되,top속성에는 0.5초의 지속 시간을 걸어주고 딜레이 시간은 0초, 트랜스 폼의 트렌지션은 0.5초의 지속 시간과 딜레이 시간을 0.5s부여 
+
+      }
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #000;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition: bottom 0.5s, transform 0.5s 0.5s;
+      }
+      span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #000;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        margin-top: -1px;
+        text-indent: -999999px; //span안의 텍스트를 들여쓰기로 왼쪽으로 -99999px로 보내서 보이지 않도록 함 
+        transition: 1s;
+      }
+    }
+    .menuMo {
+      display: none; //반응형으로 줄였다 다시 전체 웹 화면으로 바뀔때 메뉴가 보이는 현상을 없애는 코드 
+      width: 270px;
+      height: 100vh;
+      background: #333;
+      position: fixed;
+      top: 0;
+      left: -270px;
+      z-index: 10;
+      transition: 0.5s;
+      &.on {
+        left: 0px;
+      }
+      h1 {
+        padding-top: 30px;
+        border-bottom: 30px;
+        border-bottom: 1px  solid #666;
+        text-align: center;
         a {
-          display: inline-block;
-          font: 12px/1 "arial";
-          color: #999;
-          padding: 10px 30px; //높이값이나 마진들을 패딩을 사용해서 나타낼수도 있다
+          display: block;
+          font: bold 24px/1 "arial";
+          color: #fff;
+        }
+        span {
+          font-size: 12px;
+          color: #aaa;
+        }
+      }
+      #gnbMo {
+        li {
+          a {
+            display: block;
+            width: 100%;
+            padding: 20px 0; //높이갓 대신 부여해서 li를 벌림 
+            border-bottom: 1px solid #444;
+            font: bold 14px/1 "arial";
+            color: #888;
+            text-align: center;
+            
+          }
         }
       }
     }
