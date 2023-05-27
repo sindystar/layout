@@ -1,0 +1,17 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+ul,
+ol,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.hidden {
+  position: absolute;
+  top: -99999px;
+  opacity: 0;
+}

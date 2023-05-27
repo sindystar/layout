@@ -1,11 +1,4 @@
-@charset "utf-8";
-@import "reset.scss";
-@import "sub_page.scss";
-
-//scss를  분리할때 주의 할점 
-//반드시 클래스와 아이디의 중복을 피해야 한다 (클래스의 경우는 공통클래스로 관리하는 경우를 제외 하고는 반드시 클래스를 달리줘야 충돌을 방지 할수 있다)
-
-#header {
+#header_sub {
   width: 100%;
   border-bottom: 1px solid #ddd;
   .inner {
@@ -182,37 +175,23 @@
     }
   }
 }
-#visual {
+
+.content {
   width: 100%;
-  height: calc(100vh - 151px);
-  background: #eee;
+  padding: 0 0 150px;
+  .sub_visual {
+    width: 100%;
+    height: 250px;
+    background: #bbb;
+    margin-bottom: 100px;
+  }
   .inner {
     width: 1180px;
     margin: 0 auto;
+    min-height: 500px;
   }
 }
-.new {
-  width: 100%;
-  padding: 200px 0px 0px;
-  .inner {
-    position: relative;
-    width: 1180px;
-    min-height: 600px;
-    margin: 0 auto;
-    background: #ddd;
-  }
-}
-.brand {
-  width: 100%;
-  padding: 200px 0;
-  .inner {
-    position: relative;
-    width: 1180px;
-    min-height: 600px;
-    margin: 0 auto;
-    background: #ccc;
-  }
-}
+
 #footer {
   width: 100%;
   background: #eee;
