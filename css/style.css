@@ -246,6 +246,41 @@ a {
   color: #777;
 }
 
+.community .sub_visual {
+  background: green;
+}
+.community .inner h1 {
+  font-size: 50px;
+}
+
+.gallery .sub_visual {
+  background: navajowhite;
+}
+.gallery .inner h1 {
+  font-size: 50px;
+}
+
+.company .sub_visual {
+  background: pink;
+}
+.company .inner h1 {
+  font-size: 50px;
+}
+
+.department .sub_visual {
+  background: cornflowerblue;
+}
+.department .inner h1 {
+  font-size: 50px;
+}
+
+.location .sub_visual {
+  background: yellowgreen;
+}
+.location .inner h1 {
+  font-size: 50px;
+}
+
 #header {
   width: 100%;
   border-bottom: 1px solid #ddd;

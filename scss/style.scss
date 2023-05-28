@@ -1,6 +1,11 @@
 @charset "utf-8";
 @import "reset.scss";
 @import "sub_page.scss";
+@import "community.scss";
+@import "gallery.scss";
+@import "company.scss";
+@import "department.scss";
+@import "location.scss";
 
 //scss를  분리할때 주의 할점 
 //반드시 클래스와 아이디의 중복을 피해야 한다 (클래스의 경우는 공통클래스로 관리하는 경우를 제외 하고는 반드시 클래스를 달리줘야 충돌을 방지 할수 있다)
